@@ -1,7 +1,7 @@
 extends MeshInstance3D
 class_name PlanarReflector
 
-var materialToSet:ShaderMaterial = load("res://func_godot/entities/Func_planar_reflections/PlanarReflections/ReflectionMaterial.tres");
+var materialToSet:ShaderMaterial = load("res://addons/gd_planar_reflections/ReflectionMaterial.tres");
 
 var reflect_camera : Camera3D
 var reflect_viewport: SubViewport
