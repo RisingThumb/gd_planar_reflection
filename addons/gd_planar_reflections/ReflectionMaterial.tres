@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c4p4jr823j1gw"]
+
+[ext_resource type="Shader" path="res://addons/gd_planar_reflections/planar_reflection.gdshader" id="1_wmetb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pexwj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hqcwr"]
+seed = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ffsgu"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_hqcwr")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w63yn"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_hqcwr")
+
+[resource]
+resource_local_to_scene = true
+render_priority = -10
+shader = ExtResource("1_wmetb")
+shader_parameter/albedo = Color(0.290196, 0.52549, 0.670588, 1)
+shader_parameter/proximity_fade_distance = 0.5
+shader_parameter/roughness = 0.12
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 1.0
+shader_parameter/metallic = 0.0
+shader_parameter/refraction = 16.0
+shader_parameter/refraction_texture_channel = Vector4(1, 1, 1, 1)
+shader_parameter/normal_scale = 0.100001
+shader_parameter/normal_uv_mult = 16.0
+shader_parameter/distortion_strength = 0.01
+shader_parameter/uv1_scale = Vector3(20, 20, 20)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/reflection_strength = 0.5
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_ffsgu")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ffsgu")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_w63yn")
+shader_parameter/reflection_screen_texture = SubResource("ViewportTexture_pexwj")
