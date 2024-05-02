@@ -5,14 +5,14 @@ var materialToSet:ShaderMaterial = load("res://addons/gd_planar_reflections/Refl
 
 var reflect_camera : Camera3D
 var reflect_viewport: SubViewport
+@export var main_cam : Camera3D = null
+@export var reflection_camera_resolution: Vector2i = Vector2i(1920, 1080)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Test")
 	reflect_viewport = SubViewport.new();
 	add_child(reflect_viewport);
-	reflect_viewport.size = Vector2i(1920,1080);
-	
+	reflect_viewport.size = reflection_camera_resolution;
 	reflect_camera = Camera3D.new();
 	reflect_viewport.add_child(reflect_camera);
 	reflect_camera.cull_mask = 1;
@@ -24,14 +24,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	update_viewport()
-	var main_cam: Camera3D = null
-	if (Globals && Globals.player):
-		main_cam = Globals.player.camera
 	if (!main_cam):
 		return
 
-	
-	
 	var reflection_transform = global_transform * Transform3D().rotated(Vector3.RIGHT, PI/2);
 	var plane_origin = reflection_transform.origin;
 	var plane_normal = reflection_transform.basis.z.normalized();
@@ -49,7 +44,6 @@ func _process(_delta):
 		main_cam.basis.y.normalized().bounce(reflection_plane.normal).normalized(),
 		main_cam.basis.z.normalized().bounce(reflection_plane.normal).normalized()
 	)
-	
 	var mat:ShaderMaterial = self.mesh.surface_get_material(0)
 	mat.set_shader_parameter("reflection_screen_texture", reflect_viewport.get_texture());
 
