@@ -16,6 +16,11 @@ func _ready():
 	reflect_camera = Camera3D.new();
 	reflect_viewport.add_child(reflect_camera);
 	reflect_camera.cull_mask = 1;
+	reflect_camera.fov = main_cam.fov
+	reflect_camera.environment = main_cam.environment
+	reflect_camera.attributes = main_cam.attributes
+	reflect_camera.doppler_tracking = main_cam.doppler_tracking
+	reflect_camera.projection = main_cam.projection
 	reflect_camera.current = true;
 	self.mesh.surface_set_material(0, materialToSet);
 	

@@ -6,6 +6,33 @@
 
 [sub_resource type="Environment" id="Environment_selsg"]
 
+[sub_resource type="Animation" id="Animation_y3jvt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.09028, 3.07457, 4.37964)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.085186, -0.832173, 0.22968)]
+}
+
 [sub_resource type="Animation" id="Animation_54kbm"]
 resource_name = "camera"
 length = 10.0
@@ -36,33 +63,6 @@ tracks/1/keys = {
 "values": [Vector3(-0.085186, -0.832173, 0.22968), Vector3(-0.327886, 0.877756, -0.0493669), Vector3(-0.085186, -0.832173, 0.22968)]
 }
 
-[sub_resource type="Animation" id="Animation_y3jvt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.09028, 3.07457, 4.37964)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.085186, -0.832173, 0.22968)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g37lr"]
 _data = {
 "RESET": SubResource("Animation_y3jvt"),
@@ -75,8 +75,9 @@ _data = {
 main_cam = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.669913, -0.092023, -0.736715, 0.226841, 0.970208, 0.085083, 0.706937, -0.224115, 0.670829, 1.09028, 3.07457, 4.37964)
+transform = Transform3D(0.669913, -0.0920228, -0.736715, 0.22684, 0.970208, 0.085083, 0.706938, -0.224115, 0.670829, 1.09028, 3.07457, 4.37964)
 current = true
+fov = 120.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.727006, -0.533144, -0.432688, 0.686631, 0.564495, 0.458131, 0, -0.630161, 0.776465, 5.65691, 2.32691, 0)
